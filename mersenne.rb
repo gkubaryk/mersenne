@@ -1,8 +1,7 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 require 'factorize'
 
 File.open("full.tsv") do |f|
-#File.open("M197xxxx.tsv") do |f|
   f.each_line do |row|
     machine, exponent, type, date, age, factor, credit = row.split(/\t/)
     bits = Math::log(factor)/Math::log(2)
@@ -10,8 +9,6 @@ File.open("full.tsv") do |f|
 
     factor = factor.to_i
     exponent = exponent.to_i
-#    next if exponent > 2000000
-#    next if exponent < 1990000
 
     if bits > 100
       puts "*** Skipping M#{exponent}'s factor (#{factor}) because #{bits} bits is too large."
