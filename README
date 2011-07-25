@@ -16,7 +16,8 @@ mersenne.org results page.  The page presents the data in a table, and the
 data file for this program is a tab separated file, similar to a CSV file. 
 
 At present, the capabilities of this script:
- * Find the bit size and k-value for each factor.  (Explained below)
+ * Find the bit size and k-value for each factor.
+   (All factors of Mersenne numbers can be written as: 2kp+1)
  * Present the data in a semi-pretty format.
 
 In the future, what will it do?  Time will tell.  Feel free to offer ideas!
@@ -33,7 +34,6 @@ the GIMPS project:
 
 2. P-1 factoring
     Searches for "smooth" factors below given bounds
-    All factors of Mersenne numbers can be written as: 2kp+1
     A factor's "smoothness" is determined by the prime factorization of k
 
 3. ECM factoring
