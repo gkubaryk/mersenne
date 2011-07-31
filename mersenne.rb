@@ -2,6 +2,8 @@
 require 'factorize'
 
 File.open("full.tsv") do |f|
+  total_credit = 0.0
+  count = 0
   f.each_line do |row|
     machine, exponent, type, date, age, factor, credit = row.split(/\t/)
     bits = Math::log(factor)/Math::log(2)
@@ -9,6 +11,8 @@ File.open("full.tsv") do |f|
 
     factor = factor.to_i
     exponent = exponent.to_i
+    total_credit += credit.to_f
+    count += 1
 
     # Arbitrary limit; feel free to remove, but factoring large numbers can be slow
     if bits > 90
@@ -25,4 +29,7 @@ File.open("full.tsv") do |f|
     printkhash(k, factorize(k))
     print "\n"
   end
+
+  puts '-'*40
+  puts "Final stats: #{total_credit} GHz-days of credit for #{count} factors found"
 end
