@@ -1,5 +1,7 @@
 #!/usr/bin/ruby
 
+# Derived from code from http://pleac.sourceforge.net/pleac_ruby/numbers.html
+
 def factorize(orig)
   factors = {}
   factors.default = 0     # return 0 instead nil if key not found in hash

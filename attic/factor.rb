@@ -1,4 +1,5 @@
 #!/usr/bin/ruby
+# From http://pleac.sourceforge.net/pleac_ruby/numbers.html
 # bigfact - calculating prime factors
 def factorize(orig)
     factors = {}
