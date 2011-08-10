@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'factorize'
+require './factorize'
 
 File.open("full.tsv") do |f|
   total_credit = 0.0
