@@ -6,13 +6,14 @@ File.open("full.tsv") do |f|
   count = 0
   f.each_line do |row|
     machine, exponent, type, date, age, factor, credit = row.split(/\t/)
-    bits = Math::log(factor)/Math::log(2)
-    bits = Integer(bits * 100) / Float(100)
 
     factor = factor.to_i
     exponent = exponent.to_i
     total_credit += credit.to_f
     count += 1
+
+    bits = Math::log(factor)/Math::log(2)
+    bits = Integer(bits * 100) / Float(100)
 
     # Arbitrary limit; feel free to remove, but factoring large numbers can be slow
     if bits > 90
