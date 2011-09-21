@@ -1,0 +1,5 @@
+Things in this directory are for the future.
+
+sample.tsv is a 1000 line dump from http://mersenne.org/results/ that includes *ALL* lines, not just factors found.
+
+The script does not currently support this, so sample.tsv is not very valuable right now.  But maybe some day it will be.
