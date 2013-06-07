@@ -16,7 +16,7 @@ File.open("full.tsv") do |f|
     bits = Integer(bits * 100) / Float(100)
 
     # Arbitrary limit; feel free to remove, but factoring large numbers can be slow
-    if bits > 110
+    if bits > 125
       puts "*** Skipping M#{exponent}'s factor (#{factor}) because #{bits} bits is too large."
       print "\n"
       next
