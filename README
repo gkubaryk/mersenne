@@ -1,5 +1,4 @@
 'Mersenne' - Ruby script for analyzing factors found for mersenne.org
-Use of Ruby 1.8.7 is recommended.
 
 The initial purpose of this script was to analyze factors that I found using 
 mprime, a tool from mersenne.org to aid in the Great Internet Mersenne Prime 
