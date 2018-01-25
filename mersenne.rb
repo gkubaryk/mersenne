@@ -7,6 +7,7 @@ File.open("full.tsv") do |f|
   f.each_line do |row|
     machine, exponent, type, date, age, factor, credit = row.split(/\t/)
 
+    factor = factor.split(' ')[1] if factor =~ /Factor/ # new format
     factor = factor.to_i
     exponent = exponent.to_i
     total_credit += credit.to_f
