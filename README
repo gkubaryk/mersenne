@@ -1,18 +1,22 @@
 'Mersenne' - Ruby script for analyzing factors found for mersenne.org
 
-The initial purpose of this script was to analyze factors that I found using 
-mprime, a tool from mersenne.org to aid in the Great Internet Mersenne Prime 
-Search, or GIMPS.  Although the primary purpose of the GIMPS project is to 
-find values of p for which   2^p - 1   is prime, the Lucas-Lehmer (LL) test to 
-determine primality is computationally expensive.  At least two primality 
-tests must be performed: the project needs matching outputs before the result 
-is considered to be official, and if the first two tests do not match, another 
-one much be performed.  One obvious way to avoid a primality test is to search 
-for factors of the candidate numbers before running any LL tests.  Some people 
-also enjoy finding factors for "small" known-composite Mersenne numbers.
+The initial purpose of this script was to analyze factors that I found using
+mprime, a tool from mersenne.org to aid in the Great Internet Mersenne Prime
+Search, or GIMPS. Although the primary purpose of the GIMPS project is to
+find values of p for which  2^p - 1  is prime, the Fermat probable prime (PRP)
+test to determine primality is computationally expensive. Previously, the
+Lucas-Lehmer (LL) test was used, but due to lack of error detection, at least
+two such primality tests needed to be performed: the project needed matching
+outputs before the result could be considered to be official, and if the first
+two tests did not match, another one would have needed to be performed.
+Nowadays with the PRP, a proof certificate can be generated and independently
+verified with less than 1% of the CPU and wall time compared to a second LL
+test. An obvious way to avoid a primality test is to search for factors of the
+candidate numbers before running any PRP/LL tests. Some people also enjoy
+finding factors for "small" known-composite Mersenne numbers.
 
-This script currently requires a human to copy/paste entries from their 
-mersenne.org results page.  The page presents the data in a table, and the 
+This script currently requires a human to copy/paste entries from their
+mersenne.org results page. The page presents the data in a table, and the
 data file for this program is a tab separated file, similar to a CSV file. 
 
 At present, the capabilities of this script:
@@ -20,21 +24,27 @@ At present, the capabilities of this script:
    (All factors of Mersenne numbers can be written as: 2kp+1)
  * Present the data in a semi-pretty format.
 
-In the future, what will it do?  Time will tell.  Feel free to offer ideas!
+In the future, what will it do? Time will tell. Feel free to offer ideas!
 
 
 Mathematics:
 
-Although this script does not sort the factors based on how they were found, 
-it seems relevant to mention that there are three ways to find a factor for 
+Although this script does not sort the factors based on how they were found,
+it seems relevant to mention that there are three ways to find a factor for
 the GIMPS project:
 
 1. Trial factoring
-    Essentially brute force for a given bit level (i.e., between 2^67 and 2^68)
+    Brute force a given bit level (i.e., between 2^67 and 2^68)
+    Best done by a GPU: can be done orders of magnitude faster than a CPU
 
 2. P-1 factoring
     Searches for "smooth" factors below given bounds
     A factor's "smoothness" is determined by the prime factorization of k
+    Stage 1 finds factors where k is a product of primes under B1
+    Stage 2 finds factors searching each k from Stage 1 each multiplied by
+    a single additional product between B1 and B2
+    Needs a decent CPU or GPU, and for stage 2, a surplus of RAM
+    Newer mprime can do a much larger B2 than before, without extra resources
 
 3. ECM factoring
     Uses elliptic curves to find factors for small Mersenne numbers
@@ -42,5 +52,5 @@ the GIMPS project:
 
 
 For more information about the mathematics behind this stuff, see:
-http://mersenne.org/various/math.php
-http://mersenne.org/various/works.php
+https://mersenne.org/various/math.php
+https://mersenne.org/various/works.php
